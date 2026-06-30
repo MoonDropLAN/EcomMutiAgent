@@ -1,0 +1,9 @@
+.venv/
+.uv-cache/
+.pytest_cache/
+__pycache__/
+*.pyc
+data/
+.tmp/
+pytest-cache-files-*/
+.idea/

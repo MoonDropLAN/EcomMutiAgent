@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>多 Agent 电商助手</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Multi-Agent Ecommerce Demo</p>
+        <h1>多 Agent 电商助手</h1>
+      </div>
+      <div class="status-strip" aria-label="系统状态">
+        <span>Router</span>
+        <span>Product</span>
+        <span>Coupon</span>
+        <span>Order</span>
+        <span>RAG</span>
+      </div>
+    </header>
+
+    <main class="workbench">
+      <section class="workspace panel" data-region="chat-workspace">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Conversation</p>
+            <h2>导购对话</h2>
+          </div>
+          <span id="intentBadge" class="intent-badge">待开始</span>
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="message assistant">输入预算和使用场景后，我会展示推荐、优惠、订单状态和 Agent Trace。</div>
+        </div>
+
+        <div class="prompt-bar" aria-label="演示快捷指令">
+          <button data-prompt="我预算 4000，想买适合上课记笔记的平板，有没有优惠">导购优惠</button>
+          <button data-prompt="帮我下单">下单</button>
+          <button data-prompt="确认">确认</button>
+          <button data-prompt="模拟支付超时">支付超时</button>
+          <button data-prompt="这个订单能退款吗">售后判断</button>
+        </div>
+
+        <div class="composer">
+          <textarea id="message">我预算 4000，想买适合上课记笔记的平板，有没有优惠</textarea>
+          <button id="send" class="primary-action">发送</button>
+        </div>
+      </section>
+
+      <aside class="side-rail">
+        <section class="panel metric-panel" data-region="product-recommendations">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Products</p>
+              <h2>推荐商品</h2>
+            </div>
+            <span id="productCount" class="counter">0</span>
+          </div>
+          <div id="products" class="product-grid empty-state">等待导购结果</div>
+        </section>
+
+        <section class="panel metric-panel" data-region="coupon-plan">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Coupons</p>
+              <h2>优惠方案</h2>
+            </div>
+          </div>
+          <div id="coupon" class="coupon-box empty-state">等待优惠计算</div>
+        </section>
+
+        <section class="panel metric-panel" data-region="order-status">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Order</p>
+              <h2>订单状态</h2>
+            </div>
+          </div>
+          <div id="order" class="order-box empty-state">尚未创建订单</div>
+        </section>
+
+        <section class="panel metric-panel" data-region="agent-trace">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Trace</p>
+              <h2>Agent Trace</h2>
+            </div>
+          </div>
+          <ol id="trace" class="trace-list empty-state">等待工具调用</ol>
+        </section>
+      </aside>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
